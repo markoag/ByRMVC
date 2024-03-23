@@ -1,0 +1,14 @@
+{
+    "name": "taz/bienesraices",
+    "description": "Creando proyecto Poo",
+    "autoload": {
+        "psr-4": {
+            "Model\\" :"./models",
+            "MVC\\" :"./",
+            "Controllers\\" :"./controllers"
+        }
+    },
+    "require": {
+        "intervention/image": "^3.4"
+    }
+}
