@@ -1,10 +1,12 @@
 <main class="contenedor seccion">
     <h1>Admin de Bienes Raices</h1>
     <?php
-    if($resultado) {
+    if ($resultado) {
         $mensaje = mostrarNotificacion(intval($resultado));
-        if($mensaje) { ?>
-            <p class="alerta exito"><?php echo s($mensaje); ?></p>
+        if ($mensaje) { ?>
+            <p class="alerta exito">
+                <?php echo s($mensaje); ?>
+            </p>
         <?php }
     }
     ?>
@@ -34,7 +36,7 @@
                         <?php echo $propiedad->titulo; ?>
                     </td>
                     <td><img src="/imagenes/<?php echo $propiedad->imagen; ?>" class="imagen-tabla"
-                            alt="Imagen de la propiedad"></td>
+                            alt="Propiedad"></td>
                     <td>$
                         <?php echo $propiedad->precio; ?>
                     </td>

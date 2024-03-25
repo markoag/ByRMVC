@@ -1,10 +1,12 @@
 <?php
 namespace Model;
 
-class ActiveRecord {
+class ActiveRecord
+{
     // Base de datos
     protected static $db;
-    
+    protected $id;
+    protected $imagen;
     protected static $tabla = '';
     protected static $columnasDB = [];
     // Errores
@@ -72,11 +74,12 @@ class ActiveRecord {
     public function eliminar()
     {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    
+
         try {
-            $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
+            $query = "DELETE FROM " . static::$tabla . " WHERE id = " .
+                self::$db->escape_string($this->id) . " LIMIT 1";
             $resultado = self::$db->query($query);
-    
+
             if ($resultado) {
                 $this->borrarImagen();
                 header('location: /admin?resultado=3');
@@ -84,7 +87,7 @@ class ActiveRecord {
         } catch (\mysqli_sql_exception $e) {
             if ($e->getCode() == 1451) { // 1451 es el código de error
                 // Aquí puedes manejar el error, por ejemplo, redirigir a una página de error o mostrar un mensaje
-                echo "<script>alert('No se puede borrar, este registro está relacionado con otros datos');</script>";
+                echo "<script>alert('No se puede borrar este registro'); window.location.href='/admin';</script>";
             } else {
                 throw $e; // Si el error es diferente, lo lanzamos de nuevo
             }
@@ -96,8 +99,9 @@ class ActiveRecord {
     {
         $atributos = [];
         foreach (static::$columnasDB as $columna) {
-            if ($columna === 'id')
+            if ($columna === 'id') {
                 continue;
+            }
             $atributos[$columna] = $this->$columna;
         }
         return $atributos;
@@ -118,7 +122,7 @@ class ActiveRecord {
     {
         // Eliminar la imagen previa
         if (!is_null($this->id)) {
-           $this->borrarImagen();
+            $this->borrarImagen();
         }
         // Asignar al atributo de imagen el nombre de la imagen
         if ($imagen) {
@@ -151,7 +155,7 @@ class ActiveRecord {
     public static function all()
     {
         $query = "SELECT * FROM " . static::$tabla;
-        
+
         return self::consultarSQL($query);
     }
 

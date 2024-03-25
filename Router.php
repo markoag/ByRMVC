@@ -57,12 +57,13 @@ class Router
     {
 
         foreach ($data as $k => $v) {
+            // Convierte de $data['propiedades'] a $propiedades o variable de variable
             $$k = $v;
         }
 
         ob_start();
         include __DIR__ . "/views/$view.php";
-        $contenido = ob_get_clean();
+        $contenido = ob_get_clean(); //limpia el buffer
         include __DIR__ . "/views/layout.php";
     }
 }

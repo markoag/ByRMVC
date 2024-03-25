@@ -38,7 +38,7 @@ class Admin extends ActiveRecord
 
         if (!$resultado->num_rows) {
             self::$errores[] = "El usuario no existe";
-            return;
+            return false;
         }
 
         return $resultado;

@@ -33,8 +33,8 @@ if(!isset($inicio)){
                 </div>
 
                 <div class="derecha">
-                    <img class="dark-mode-boton" src="/build/img/dark-mode.svg">
-                    <nav class="navegacion">
+                    <img class="dark-mode-boton" src="/build/img/dark-mode.svg" alt="Modo oscuro">
+                    <nav class="navegacion" aria-label="Main Navigation">
                         <a href="/nosotros">Nosotros</a>
                         <a href="/propiedades">Anuncios</a>
                         <a href="/blog">Blog</a>
@@ -59,7 +59,7 @@ if(!isset($inicio)){
     <!-- FOOTER -->
     <footer class="footer seccion">
         <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
+            <nav class="navegacion" aria-label="Main Navigation">
                 <a href="/nosotros">Nosotros</a>
                 <a href="/anuncios">Anuncios</a>
                 <a href="/blog">Blog</a>
