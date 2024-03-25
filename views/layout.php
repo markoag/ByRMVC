@@ -4,7 +4,7 @@ if (!isset ($_SESSION)) {
 }
 
 $auth = $_SESSION['login'] ?? false;
-if(!isset($inicio)){
+if (!isset ($inicio)) {
     $inicio = false;
 }
 ?>
@@ -41,6 +41,8 @@ if(!isset($inicio)){
                         <a href="/contacto">Contacto</a>
                         <?php if ($auth) { ?>
                             <a href="/logout">Cerrar Sesión</a>
+                        <?php } else { ?>
+                            <a href="/login">Login</a>
                         <?php } ?>
 
                     </nav>
